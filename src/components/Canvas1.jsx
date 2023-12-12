@@ -31,11 +31,11 @@ const draw = (ctx, frameCount, ratio) => {
   backgroundImages.forEach((image) => {
     ctx.drawImage(
       image.image,
-      (frameCount * image.speed) % image.image.width,
+      0,
       0,
       ctx.canvas.width * ratio,
       ctx.canvas.height * ratio,
-      0,
+      -(frameCount * image.speed) % image.image.width,
       0,
       ctx.canvas.width * ratio,
       ctx.canvas.height * ratio,
