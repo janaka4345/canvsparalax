@@ -18,19 +18,20 @@ export default function Canvas1(props) {
     </>
   );
 }
-const backgroundImages = backgroundImageUrls.map((url) => {
+const backgroundImages = backgroundImageUrls.map((url, i) => {
   const image = new Image();
+  // console.log(image);
   image.src = url;
-  return image;
+  const speed = i * 2;
+  return { image, speed };
 });
-console.log(backgroundImages);
+// console.log(backgroundImages);
 const draw = (ctx, frameCount, ratio) => {
-  console.log(ctx.canvas.width, ctx.canvas.height);
   ctx.clearRect(0, 0, ctx.canvas.width * ratio, ctx.canvas.height * ratio);
   backgroundImages.forEach((image) => {
     ctx.drawImage(
-      image,
-      0,
+      image.image,
+      (frameCount * image.speed) % image.image.width,
       0,
       ctx.canvas.width * ratio,
       ctx.canvas.height * ratio,
@@ -40,4 +41,19 @@ const draw = (ctx, frameCount, ratio) => {
       ctx.canvas.height * ratio,
     );
   });
+  // backgroundImages.forEach((image) => {
+  //   ctx.drawImage(
+  //     image.image,
+  //     ((frameCount * image.speed) % image.image.width) +
+  //       image.image.width -
+  //       520,
+  //     0,
+  //     ctx.canvas.width * ratio,
+  //     ctx.canvas.height * ratio,
+  //     0,
+  //     0,
+  //     ctx.canvas.width * ratio,
+  //     ctx.canvas.height * ratio,
+  //   );
+  // });
 };
