@@ -12,3 +12,8 @@
   left: 0;
   background: black;
 }
+.canvasdiv {
+  position: relative;
+  width: 400px;
+  height: 350px;
+}
