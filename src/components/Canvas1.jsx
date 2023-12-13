@@ -20,56 +20,28 @@ export default function Canvas1(props) {
 }
 const backgroundImages = backgroundImageUrls.map((url, i) => {
   const image = new Image();
-  // console.log(image);
   image.src = url;
-  const speed = i * 2;
+  const speed = i + 1;
   return { image, speed };
 });
-const xt = 1;
-console.log(backgroundImages);
+
+console.log(backgroundImages[5].image);
 const draw = (ctx, frameCount, ratio) => {
   ctx.clearRect(0, 0, ctx.canvas.width * ratio, ctx.canvas.height * ratio);
-  ctx.drawImage(
-    backgroundImages[4].image,
-    -(frameCount * xt) % backgroundImages[4].image.width,
-    0,
-    ctx.canvas.width * ratio,
-    ctx.canvas.height * ratio,
-  );
-  ctx.drawImage(
-    backgroundImages[5].image,
-    2400 - ((frameCount * xt) % backgroundImages[5].image.width),
-    0,
-    ctx.canvas.width * ratio,
-    ctx.canvas.height * ratio,
-  );
-  // backgroundImages.forEach((image) => {
-  //   ctx.drawImage(
-  //     image.image,
-  //     -(frameCount * image.speed) % image.image.width,
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //   );
-  //   ctx.drawImage(
-  //     image.image,
-  //     1000 - ((frameCount * image.speed) % image.image.width),
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //   );
-  // });
-  // backgroundImages.forEach((image) => {
-  //   ctx.drawImage(
-  //     image.image,
-  //     0,
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //     -((frameCount * image.speed) % image.image.width) + image.image.width,
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //   );
-  // });
+  backgroundImages.forEach((image) => {
+    ctx.drawImage(
+      image.image,
+      (-frameCount * image.speed) % image.image.width,
+      0,
+      image.image.width * ratio,
+      ctx.canvas.height * ratio,
+    );
+    ctx.drawImage(
+      image.image,
+      image.image.width + ((-frameCount * image.speed) % image.image.width),
+      0,
+      image.image.width * ratio,
+      ctx.canvas.height * ratio,
+    );
+  });
 };

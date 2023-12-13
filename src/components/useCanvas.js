@@ -6,8 +6,8 @@ const useCanvas = (draw) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = 800;
+      canvas.height = 350;
     };
     handleResize();
     window.addEventListener("resize", handleResize);

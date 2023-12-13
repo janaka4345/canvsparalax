@@ -3,9 +3,7 @@ export default function World(props) {
   console.log("rendered");
   return (
     <>
-      <div className="canvasdiv">
-        <Canvas1 />
-      </div>
+      <Canvas1 />
     </>
   );
 }
