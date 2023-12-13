@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useCanvas from "./useCanvas";
 const backgroundImageUrls = [
   "./layer-1.png",
