@@ -7,7 +7,7 @@ const backgroundImageUrls = [
   "./layer-4.png",
   "./layer-5.png",
 ];
-
+/// thereis a  jump when adjusting speed try to fix
 export default function Canvas1(props) {
   const canvasRef = useCanvas(draw);
 

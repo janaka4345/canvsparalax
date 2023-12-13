@@ -7,9 +7,8 @@ const backgroundImageUrls = [
   "./layer-4.png",
   "./layer-5.png",
 ];
-
-export default function Canvas1(props) {
-  console.log("renderedcanvas1");
+/// thereis a  jump when adjusting speed try to fix
+export default function Canvas2(props) {
   const canvasRef = useCanvas(draw);
 
   return (
@@ -20,59 +19,25 @@ export default function Canvas1(props) {
 }
 const backgroundImages = backgroundImageUrls.map((url, i) => {
   const image = new Image();
-  // console.log(image);
   image.src = url;
-  const speed = i * 2;
-  return { image, speed };
+  return image;
 });
-const xt = 1;
-let frameCountN = 0;
-console.log(backgroundImages);
+let gamespeed = 15;
+let x = 0;
 const draw = (ctx, frameCount, ratio) => {
   ctx.clearRect(0, 0, ctx.canvas.width * ratio, ctx.canvas.height * ratio);
-  ctx.drawImage(
-    backgroundImages[4].image,
-    (frameCountN * xt) % backgroundImages[4].image.width,
-    0,
-    ctx.canvas.width * ratio,
-    ctx.canvas.height * ratio,
-  );
-  ctx.drawImage(
-    backgroundImages[5].image,
-    backgroundImages[4].image.width +
-      ((frameCountN * xt) % backgroundImages[5].image.width),
-    0,
-    ctx.canvas.width * ratio,
-    ctx.canvas.height * ratio,
-  );
-  // backgroundImages.forEach((image) => {
-  //   ctx.drawImage(
-  //     image.image,
-  //     -(frameCountN * image.speed) % image.image.width,
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //   );
-  //   ctx.drawImage(
-  //     image.image,
-  //     1000 - ((frameCountN * image.speed) % image.image.width),
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //   );
-  // });
-  // backgroundImages.forEach((image) => {
-  //   ctx.drawImage(
-  //     image.image,
-  //     0,
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //     -((frameCountN * image.speed) % image.image.width) + image.image.width,
-  //     0,
-  //     ctx.canvas.width * ratio,
-  //     ctx.canvas.height * ratio,
-  //   );
-  // });
-  frameCountN--;
+  backgroundImages.forEach((image) => {
+    // gamespeed = gamespeed * image.speed;
+
+    ctx.drawImage(image, x, 0, image.width * ratio, ctx.canvas.height * ratio);
+    ctx.drawImage(
+      image,
+      x + image.width,
+      0,
+      image.width * ratio,
+      ctx.canvas.height * ratio,
+    );
+  });
+  x -= gamespeed;
+  x < -2400 ? (x = 2400 + x - gamespeed) : null;
 };
