@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import useCanvas from "./useCanvas";
 const backgroundImageUrls = [
   "./layer-1.png",
@@ -26,10 +27,16 @@ let gamespeed = 15;
 let x = 0;
 const draw = (ctx, frameCount, ratio) => {
   ctx.clearRect(0, 0, ctx.canvas.width * ratio, ctx.canvas.height * ratio);
-  backgroundImages.forEach((image) => {
+  backgroundImages.forEach((image, i) => {
     // gamespeed = gamespeed * image.speed;
 
-    ctx.drawImage(image, x, 0, image.width * ratio, ctx.canvas.height * ratio);
+    ctx.drawImage(
+      image,
+      x + 0,
+      0,
+      image.width * ratio,
+      ctx.canvas.height * ratio,
+    );
     ctx.drawImage(
       image,
       x + image.width,
