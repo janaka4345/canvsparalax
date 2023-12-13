@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import useCanvas from "./useCanvas";
 const backgroundImageUrls = [
   "./layer-1.png",
@@ -9,7 +10,6 @@ const backgroundImageUrls = [
 ];
 
 export default function Canvas1(props) {
-  console.log("renderedcanvas1");
   const canvasRef = useCanvas(draw);
 
   return (
