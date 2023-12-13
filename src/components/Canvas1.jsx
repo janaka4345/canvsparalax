@@ -25,7 +25,6 @@ const backgroundImages = backgroundImageUrls.map((url, i) => {
   return { image, speed };
 });
 
-console.log(backgroundImages[5].image);
 const draw = (ctx, frameCount, ratio) => {
   ctx.clearRect(0, 0, ctx.canvas.width * ratio, ctx.canvas.height * ratio);
   backgroundImages.forEach((image) => {
